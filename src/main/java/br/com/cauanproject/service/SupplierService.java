@@ -2,6 +2,8 @@ package br.com.cauanproject.service;
 
 import br.com.cauanproject.entity.Supplier;
 import br.com.cauanproject.repository.SupplierRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,10 @@ public class SupplierService {
 
     public Supplier salvar(Supplier supplier) {
         return repository.save(supplier);
+    }
+
+    public Page<Supplier> listarTodos(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public List<Supplier> listarTodos() {

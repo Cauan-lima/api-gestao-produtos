@@ -2,6 +2,8 @@ package br.com.cauanproject.service;
 
 import br.com.cauanproject.entity.Category;
 import br.com.cauanproject.repository.CategoryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,10 @@ public class CategoryService {
 
     public Category salvar(Category category) {
         return repository.save(category);
+    }
+
+    public Page<Category> listarTodos(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public List<Category> listarTodos() {

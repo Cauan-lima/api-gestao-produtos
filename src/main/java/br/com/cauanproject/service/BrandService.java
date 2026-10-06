@@ -2,6 +2,8 @@ package br.com.cauanproject.service;
 
 import br.com.cauanproject.entity.Brand;
 import br.com.cauanproject.repository.BrandRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,10 @@ public class BrandService {
 
     public Brand salvar(Brand brand) {
         return repository.save(brand);
+    }
+
+    public Page<Brand> listarTodos(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public List<Brand> listarTodos() {

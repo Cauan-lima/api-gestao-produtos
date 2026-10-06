@@ -69,6 +69,10 @@ public class ProductService {
     }
 
     // READ ALL COM PAGINAÇÃO
+    public Page<Product> listarTodos(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
     public List<Product> listarTodos() {
         return repository.findAll();
     }

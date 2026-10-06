@@ -2,6 +2,8 @@ package br.com.cauanproject.service;
 
 import br.com.cauanproject.entity.Stock;
 import br.com.cauanproject.repository.StockRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,10 @@ public class StockService {
 
     public Stock salvar(Stock stock) {
         return repository.save(stock);
+    }
+
+    public Page<Stock> listarTodos(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public List<Stock> listarTodos() {
