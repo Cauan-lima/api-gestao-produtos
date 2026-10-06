@@ -1,9 +1,7 @@
 package br.com.cauanproject.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -15,10 +13,18 @@ public class Product {
     private String nome;
     private Double preco;
     private Integer quantidade;
-    private String descricao;
 
-    public Product() {
-    }
+    @ManyToOne
+    private Category category;
+
+    @ManyToMany
+    private List<Supplier> suppliers;
+
+    @OneToOne
+    private Stock stock;
+
+    @ManyToOne
+    private Brand brand;
 
     public Long getId() {
         return id;
@@ -52,11 +58,35 @@ public class Product {
         this.quantidade = quantidade;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Supplier> getSuppliers() {
+        return suppliers;
+    }
+
+    public void setSuppliers(List<Supplier> suppliers) {
+        this.suppliers = suppliers;
+    }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 }
